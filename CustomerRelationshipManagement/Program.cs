@@ -18,10 +18,10 @@ namespace CustomerRelationshipManagement
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           // Application.Run(new Form1());
-            SQLiteConnection.CreateFile("./b.sqlite");
-            SQLiteConnection conn = new SQLiteConnection("Data Source=./b.sqlite;Version=3;");
-            conn.Open();
+            Application.Run(new MainForm());
+            //SQLiteConnection.CreateFile("./b.sqlite");
+            //SQLiteConnection conn = new SQLiteConnection("Data Source=./b.sqlite;Version=3;");
+            //conn.Open();
         }
     }
 }

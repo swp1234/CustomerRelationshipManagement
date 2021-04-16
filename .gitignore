@@ -1,0 +1,4 @@
+CustomerRelationshipManagement/bin
+CustomerRelationshipManagement/obj
+*.csproj
+*.csproj.user
