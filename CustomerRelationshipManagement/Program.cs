@@ -19,9 +19,12 @@ namespace CustomerRelationshipManagement
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
-            //SQLiteConnection.CreateFile("./b.sqlite");
-            //SQLiteConnection conn = new SQLiteConnection("Data Source=./b.sqlite;Version=3;");
+            //SQLiteConnection conn = new SQLiteConnection("Data Source=E:/project/CustomerRelationshipManagement/CustomerRelationshipManagement/memberdatabase.db;Version=3;");
             //conn.Open();
+            //string sql = "select * from member";
+            //SQLiteCommand cmd = new SQLiteCommand(sql, conn);
+            //var reader = cmd.ExecuteScalar();
+
         }
     }
 }
