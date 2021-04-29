@@ -44,6 +44,7 @@ namespace CustomerRelationshipManagement
             this.birthDate = new System.Windows.Forms.DateTimePicker();
             this.registerDate = new System.Windows.Forms.DateTimePicker();
             this.lastVisitDate = new System.Windows.Forms.DateTimePicker();
+            this.registerButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NameLabel
@@ -110,7 +111,7 @@ namespace CustomerRelationshipManagement
             // 
             this.lastVisitDateLabel.AutoSize = true;
             this.lastVisitDateLabel.Font = new System.Drawing.Font("서울남산 장체B", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lastVisitDateLabel.Location = new System.Drawing.Point(2, 384);
+            this.lastVisitDateLabel.Location = new System.Drawing.Point(4, 367);
             this.lastVisitDateLabel.Name = "lastVisitDateLabel";
             this.lastVisitDateLabel.Size = new System.Drawing.Size(97, 16);
             this.lastVisitDateLabel.TabIndex = 6;
@@ -118,15 +119,16 @@ namespace CustomerRelationshipManagement
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(307, 25);
+            this.nameTextBox.Location = new System.Drawing.Point(334, 25);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(105, 23);
             this.nameTextBox.TabIndex = 7;
             this.nameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nameTextBox.KeyPress += this.nameTextBox_KeyPress;
             // 
             // phoneTextBox
             // 
-            this.phoneTextBox.Location = new System.Drawing.Point(253, 82);
+            this.phoneTextBox.Location = new System.Drawing.Point(280, 82);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(159, 23);
             this.phoneTextBox.TabIndex = 8;
@@ -139,7 +141,7 @@ namespace CustomerRelationshipManagement
             this.sexComboBox.Items.AddRange(new object[] {
             "F",
             "M"});
-            this.sexComboBox.Location = new System.Drawing.Point(291, 142);
+            this.sexComboBox.Location = new System.Drawing.Point(318, 142);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.sexComboBox.Size = new System.Drawing.Size(121, 23);
@@ -148,41 +150,55 @@ namespace CustomerRelationshipManagement
             // 
             // pointTextBox
             // 
-            this.pointTextBox.Location = new System.Drawing.Point(291, 189);
+            this.pointTextBox.Location = new System.Drawing.Point(318, 189);
             this.pointTextBox.Name = "pointTextBox";
             this.pointTextBox.Size = new System.Drawing.Size(121, 23);
             this.pointTextBox.TabIndex = 10;
+            this.pointTextBox.Text = "0";
             this.pointTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.pointTextBox.KeyPress += this.pointTextBox_KeyPress;
             // 
             // birthDate
             // 
-            this.birthDate.Location = new System.Drawing.Point(212, 254);
+            this.birthDate.Location = new System.Drawing.Point(239, 254);
             this.birthDate.Name = "birthDate";
             this.birthDate.Size = new System.Drawing.Size(200, 23);
             this.birthDate.TabIndex = 11;
-            this.birthDate.Value = new System.DateTime(2021, 4, 27, 0, 0, 0, 0);
+            this.birthDate.Value = new System.DateTime(2021, 4, 30, 0, 0, 0, 0);
             // 
             // registerDate
             // 
-            this.registerDate.Location = new System.Drawing.Point(212, 312);
+            this.registerDate.Location = new System.Drawing.Point(239, 312);
             this.registerDate.Name = "registerDate";
             this.registerDate.Size = new System.Drawing.Size(200, 23);
             this.registerDate.TabIndex = 12;
-            this.registerDate.Value = new System.DateTime(2021, 4, 27, 0, 0, 0, 0);
+            this.registerDate.Value = new System.DateTime(2021, 4, 30, 0, 0, 0, 0);
             // 
             // lastVisitDate
             // 
-            this.lastVisitDate.Location = new System.Drawing.Point(212, 377);
+            this.lastVisitDate.Location = new System.Drawing.Point(239, 363);
             this.lastVisitDate.Name = "lastVisitDate";
             this.lastVisitDate.Size = new System.Drawing.Size(200, 23);
             this.lastVisitDate.TabIndex = 13;
-            this.lastVisitDate.Value = new System.DateTime(2021, 4, 27, 0, 0, 0, 0);
+            this.lastVisitDate.Value = new System.DateTime(2021, 4, 30, 0, 0, 0, 0);
+            // 
+            // registerButton
+            // 
+            this.registerButton.Font = new System.Drawing.Font("서울남산 장체B", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.registerButton.Location = new System.Drawing.Point(328, 404);
+            this.registerButton.Name = "registerButton";
+            this.registerButton.Size = new System.Drawing.Size(111, 36);
+            this.registerButton.TabIndex = 14;
+            this.registerButton.Text = "등록";
+            this.registerButton.UseVisualStyleBackColor = true;
+            this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(471, 450);
+            this.Controls.Add(this.registerButton);
             this.Controls.Add(this.lastVisitDate);
             this.Controls.Add(this.registerDate);
             this.Controls.Add(this.birthDate);
@@ -222,5 +238,6 @@ namespace CustomerRelationshipManagement
         private System.Windows.Forms.DateTimePicker birthDate;
         private System.Windows.Forms.DateTimePicker registerDate;
         private System.Windows.Forms.DateTimePicker lastVisitDate;
+        private System.Windows.Forms.Button registerButton;
     }
 }
