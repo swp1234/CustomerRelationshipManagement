@@ -2,4 +2,5 @@ CustomerRelationshipManagement/bin
 CustomerRelationshipManagement/obj
 *.csproj
 *.csproj.user
-..vs/
+/CustomerRelationshipManagement/*.db
+/.vs
