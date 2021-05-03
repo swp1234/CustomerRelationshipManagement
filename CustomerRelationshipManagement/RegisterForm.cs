@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CustomerRelationshipManagement
@@ -19,7 +12,9 @@ namespace CustomerRelationshipManagement
     enum TextBoxType
     {
         핸드폰번호,
-        잔여금액
+        잔여금액,
+        성별,
+        이름
     }
 
     public partial class RegisterForm : Form
@@ -33,14 +28,14 @@ namespace CustomerRelationshipManagement
         {
             bool isTextValid = true;
             string name = nameTextBox.Text.Trim().Replace(" ", "");
-            isTextValid = CheckTextIfEmpty(name, "이름");
-            if(!isTextValid)
+            isTextValid = CheckTextIfEmpty(name, TextBoxType.이름);
+            if (!isTextValid)
             {
                 return;
             }
 
             string phone = phoneTextBox.Text.Replace("-", "").Trim().Replace(" ", "");
-            isTextValid = CheckTextIfEmpty(phone, "핸드폰 번호") && CheckTextIfValid(phone,TextBoxType.핸드폰번호);
+            isTextValid = CheckTextIfEmpty(phone, TextBoxType.핸드폰번호) && CheckTextIfValid(phone, TextBoxType.핸드폰번호);
             if (!isTextValid)
             {
                 return;
@@ -53,18 +48,48 @@ namespace CustomerRelationshipManagement
             }
             int point = int.Parse(pointTextBox.Text.Trim().Replace(" ", ""));
 
+            isTextValid = CheckTextIfEmpty(sexComboBox.Text.Trim().Replace(" ", ""), TextBoxType.성별);
+            if (!isTextValid)
+            {
+                return;
+            }
+            string sex = sexComboBox.Text.Replace(" ", "");
+
+            var birth = birthDate.Value.ToString("yyyy-MM-dd");
+            var register = registerDate.Value.ToString("yyyy-MM-dd");
+            var lastVisit = lastVisitDate.Value.ToString("yyyy-MM-dd");
+
+            string memo = memoTextBox.Text;
+
+            Database db = new Database();
+            bool result = db.RegisterMember(name, phone, sex, point, birth, register, lastVisit,memo);
+
+            if (result)
+            {
+                ShowConfirmMessage("회원등록이 완료되었습니다.", "등록 성공");
+                this.Close();
+            }
+            else
+            {
+                ShowWarningMessage("회원등록 실패. 아마 이미 가입되었을지도?!", "등록 실패");
+            }
         }
 
-        private void ShowWarningMessage(string warningContext, ErrorType type)
+        private void ShowWarningMessage(string text, string header)
         {
-            MessageBox.Show($"{warningContext}을(를) 다시 입력해주세요. 원인 : {type.ToString()}", "틀렸다 닝겐", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show(text, header, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        private bool CheckTextIfEmpty(string text, string textName)
+        private void ShowConfirmMessage(string text, string header)
+        {
+            MessageBox.Show(text, header, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private bool CheckTextIfEmpty(string text, TextBoxType type)
         {
             if (text.Replace(" ", "").Length <= 0)
             {
-                ShowWarningMessage(textName, ErrorType.공란);
+                ShowWarningMessage($"{type.ToString()}을(를) 다시 입력해주세요. 원인 : {ErrorType.공란}", "틀렸다 닝겐");
                 return false;
             }
             else
@@ -81,14 +106,14 @@ namespace CustomerRelationshipManagement
                 case TextBoxType.잔여금액:
                     if (text.Equals("") || int.Parse(text) < 0)
                     {
-                        ShowWarningMessage(type.ToString(), ErrorType.유효하지않음);
+                        ShowWarningMessage($"{type.ToString()}을(를) 다시 입력해주세요. 원인 : {ErrorType.유효하지않음}", "틀렸다 닝겐");
                         isTextValid = false;
                     }
                     break;
                 case TextBoxType.핸드폰번호:
                     if (text.Length > 11)
                     {
-                        ShowWarningMessage(type.ToString(), ErrorType.유효하지않음);
+                        ShowWarningMessage($"{type.ToString()}을(를) 다시 입력해주세요. 원인 : {ErrorType.유효하지않음}", "틀렸다 닝겐");
                         isTextValid = false;
                     }
                     break;

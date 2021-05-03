@@ -30,7 +30,7 @@ namespace CustomerRelationshipManagement
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
-            this.NameLabel = new System.Windows.Forms.Label();
+            this.nameLabel = new System.Windows.Forms.Label();
             this.phoneLabel = new System.Windows.Forms.Label();
             this.sexLabel = new System.Windows.Forms.Label();
             this.pointLabel = new System.Windows.Forms.Label();
@@ -45,17 +45,19 @@ namespace CustomerRelationshipManagement
             this.registerDate = new System.Windows.Forms.DateTimePicker();
             this.lastVisitDate = new System.Windows.Forms.DateTimePicker();
             this.registerButton = new System.Windows.Forms.Button();
+            this.memoLabel = new System.Windows.Forms.Label();
+            this.memoTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // NameLabel
+            // nameLabel
             // 
-            this.NameLabel.AutoSize = true;
-            this.NameLabel.Font = new System.Drawing.Font("서울남산 장체B", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.NameLabel.Location = new System.Drawing.Point(33, 32);
-            this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(32, 16);
-            this.NameLabel.TabIndex = 0;
-            this.NameLabel.Text = "이름";
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Font = new System.Drawing.Font("서울남산 장체B", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.nameLabel.Location = new System.Drawing.Point(33, 32);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(32, 16);
+            this.nameLabel.TabIndex = 0;
+            this.nameLabel.Text = "이름";
             // 
             // phoneLabel
             // 
@@ -124,7 +126,6 @@ namespace CustomerRelationshipManagement
             this.nameTextBox.Size = new System.Drawing.Size(105, 23);
             this.nameTextBox.TabIndex = 7;
             this.nameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.nameTextBox.KeyPress += this.nameTextBox_KeyPress;
             // 
             // phoneTextBox
             // 
@@ -156,7 +157,6 @@ namespace CustomerRelationshipManagement
             this.pointTextBox.TabIndex = 10;
             this.pointTextBox.Text = "0";
             this.pointTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.pointTextBox.KeyPress += this.pointTextBox_KeyPress;
             // 
             // birthDate
             // 
@@ -185,7 +185,7 @@ namespace CustomerRelationshipManagement
             // registerButton
             // 
             this.registerButton.Font = new System.Drawing.Font("서울남산 장체B", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.registerButton.Location = new System.Drawing.Point(328, 404);
+            this.registerButton.Location = new System.Drawing.Point(328, 647);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(111, 36);
             this.registerButton.TabIndex = 14;
@@ -193,11 +193,31 @@ namespace CustomerRelationshipManagement
             this.registerButton.UseVisualStyleBackColor = true;
             this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
+            // memoLabel
+            // 
+            this.memoLabel.AutoSize = true;
+            this.memoLabel.Font = new System.Drawing.Font("서울남산 장체B", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.memoLabel.Location = new System.Drawing.Point(32, 418);
+            this.memoLabel.Name = "memoLabel";
+            this.memoLabel.Size = new System.Drawing.Size(33, 16);
+            this.memoLabel.TabIndex = 15;
+            this.memoLabel.Text = "메모";
+            // 
+            // memoTextBox
+            // 
+            this.memoTextBox.Location = new System.Drawing.Point(239, 411);
+            this.memoTextBox.Multiline = true;
+            this.memoTextBox.Name = "memoTextBox";
+            this.memoTextBox.Size = new System.Drawing.Size(200, 190);
+            this.memoTextBox.TabIndex = 16;
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(471, 450);
+            this.ClientSize = new System.Drawing.Size(471, 725);
+            this.Controls.Add(this.memoTextBox);
+            this.Controls.Add(this.memoLabel);
             this.Controls.Add(this.registerButton);
             this.Controls.Add(this.lastVisitDate);
             this.Controls.Add(this.registerDate);
@@ -212,7 +232,7 @@ namespace CustomerRelationshipManagement
             this.Controls.Add(this.pointLabel);
             this.Controls.Add(this.sexLabel);
             this.Controls.Add(this.phoneLabel);
-            this.Controls.Add(this.NameLabel);
+            this.Controls.Add(this.nameLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -224,7 +244,7 @@ namespace CustomerRelationshipManagement
 
         #endregion
 
-        private System.Windows.Forms.Label NameLabel;
+        private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label phoneLabel;
         private System.Windows.Forms.Label sexLabel;
         private System.Windows.Forms.Label pointLabel;
@@ -239,5 +259,7 @@ namespace CustomerRelationshipManagement
         private System.Windows.Forms.DateTimePicker registerDate;
         private System.Windows.Forms.DateTimePicker lastVisitDate;
         private System.Windows.Forms.Button registerButton;
+        private System.Windows.Forms.Label memoLabel;
+        private System.Windows.Forms.TextBox memoTextBox;
     }
 }
